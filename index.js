@@ -1,8 +1,8 @@
 const WXService = {
-  Base: require('./modules/base'),
-  OAuth: require('./modules/oauth'),
-  
-  CONSTANTS: require('./constants')
+  Base: require('./src/modules/base'),
+  OAuth: require('./src/modules/oauth'),
+
+  CONSTANTS: require('./src/constants')
 }
 
 module.exports = WXService
