@@ -12,7 +12,9 @@ WXService.CONSTANTS = require('./src/constants')
 
 WXService.CONFIG = {
   appId: '',
-  appSecret: ''
+  appSecret: '',
+  token: '',
+  EncodingAESKey: ''
 }
 
 module.exports = WXService
