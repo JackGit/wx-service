@@ -1,0 +1,26 @@
+{
+  "name": "wx-service",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackgit/wx-service.git"
+  },
+  "author": "ygjack414@hotmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jackgit/wx-service/issues"
+  },
+  "homepage": "https://github.com/jackgit/wx-service#readme",
+  "dependencies": {
+    "md5": "^2.2.1",
+    "moment": "^2.18.1",
+    "node-fetch": "^1.6.3",
+    "randomstring": "^1.1.5",
+    "sha1": "^1.1.1"
+  }
+}
