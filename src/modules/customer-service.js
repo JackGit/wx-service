@@ -1,3 +1,3 @@
 module.exports = function (WXService) {
-  WXService.pay = {}
+  WXService.customerService = {}
 }

@@ -1,14 +1,18 @@
 const baseAPI = require('../api/base')
+const sha1 = require('sha1')
 
-class Base {
-  constructor (appid, secret) {
-    this.appid = appid
-    this.secret = secret
-  }
+module.exports = function (WXService) {
+  WXService.base = {
+    sign (nonce, timestamp, token) {
+      return sha1([nonce, timestamp, token].sort().join(''))
+    },
 
-  getAccessToken () {
-    return baseAPI.getAccessToken(this.appid, this.secret)
+    getAccessToken () {
+      return baseAPI.getAccessToken(WXService.CONFIG.appId, WXService.CONFIG.appSecret)
+    },
+
+    getCallbackIP (accessToken) {
+      return baseAPI.getCallbackIP(accessToken)
+    }
   }
 }
-
-module.exports = Base

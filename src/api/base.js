@@ -8,3 +8,7 @@ exports.getAccessToken = function (appid, secret) {
     secret
   })
 }
+
+exports.getCallbackIP = function (accessToken) {
+  return fetch.get(`${URLS.API_BASE_CALLBACK_IP}?access_token=${accessToken}`)
+}
