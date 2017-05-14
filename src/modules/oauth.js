@@ -5,15 +5,15 @@ const oauthAPI = require('../api/oauth')
 module.exports = function (WXService) {
   WXService.oauth = {
     getAuthorizeURL (redirectURI, scope, state) {
-      return oauthAPI.getAuthorizeURL(WXService.CONFIG.appId, redirectURI, scope, state)
+      return oauthAPI.getAuthorizeURL(WXService.config.appId, redirectURI, scope, state)
     },
 
     getAccessToken (authorizeCode) {
-      return oauthAPI.getAccessToken(WXService.CONFIG.appId, WXService.CONFIG.appSecret, authorizeCode)
+      return oauthAPI.getAccessToken(WXService.config.appId, WXService.config.appSecret, authorizeCode)
     },
 
     refreshAccessToken (refreshToken) {
-      return oauthAPI.refreshAccessToken(WXService.CONFIG.appId, refreshToken)
+      return oauthAPI.refreshAccessToken(WXService.config.appId, refreshToken)
     },
 
     verifyAccessToken (accessToken, openid) {
