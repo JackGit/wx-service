@@ -24,4 +24,7 @@ WXService.config = {
   EncodingAESKey: ''
 }
 
+// cache
+WXService.cache = {}
+
 module.exports = WXService
