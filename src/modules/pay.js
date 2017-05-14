@@ -1,3 +1,7 @@
 module.exports = function (WXService) {
-  WXService.pay = {}
+  WXService.pay = {
+    sign () {
+      
+    }
+  }
 }

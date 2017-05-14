@@ -10,10 +10,6 @@ exports.sign = function (request) {
   return md5(queryString).toUpperCase()
 }
 
-exports.generateOrderId = function () {
-
-}
-
 exports.getTimeString = function (date) {
   return moment(date).format('yyyyMMddHHmmss')
 }
