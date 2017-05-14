@@ -15,29 +15,37 @@ module.exports = function (WXService) {
     },
 
     createOrder (request) {
-      let requestObj = {
-        appid: WXService.config.appId,
-        mch_id: WXService.config.merchantId,
-        device_info: 'WEB',
-        nonce_str: randomString(16),
-        // sign: '',
-        sign_type: 'MD5',
-        body: request.body,
-        // detail: '',
-        attach: request.attach,
-        out_trade_no: request.out_trade_no,
-        fee_type: 'CNY',
-        total_fee: request.total_fee,
-        spbill_create_ip: request.ip,
-        time_start: request.time_start,
-        time_expire: request.time_expire,
-        goods_tag: request.goods_tag,
-        notify_url: request.notify_url,
-        trade_type: 'JSAPI',
-        product_id: request.product_id,
-        limit_pay: 'no_credit',
-        openid: request.openid
-      }
+      let requestObj = {}
+
+      requestObj.appid = WXService.config.appId
+      requestObj.mch_id = WXService.config.merchantId
+      requestObj.device_info = 'WEB'
+      requestObj.nonce_str = randomString(16)
+      requestObj.body = request.body
+      requestObj.out_trade_no = request.out_trade_no
+      requestObj.fee_type = 'CNY'
+      requestObj.total_fee = request.total_fee
+      requestObj.spbill_create_ip = request.ip
+      requestObj.notify_url = request.notify_url
+      requestObj.trade_type = 'JSAPI'
+      requestObj.product_id = request.product_id
+      requestObj.limit_pay = 'no_credit'
+      requestObj.openid = request.openid
+
+      ['detail', 'attach', 'goods_tag'].forEach(key => {
+        if (requestObj[key]) {
+          requestObj[key] = request[key]
+        }
+      })
+
+      ['time_start', 'time_expire'].forEach(key => {
+        let t = request[key]
+        if (t) {
+          requestObj[key] = typeof t === 'string' ? t : WXService.pay.getTimeString(t)
+        }
+      })
+
+      requestObj.sign_type = 'MD5'
       requestObj.sign = sign(requestObj, WXService.config.payKey)
 
       return payAPI.createOrder(requestObj)
