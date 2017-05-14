@@ -28,11 +28,10 @@ module.exports = function (WXService) {
       requestObj.spbill_create_ip = request.ip
       requestObj.notify_url = request.notify_url
       requestObj.trade_type = 'JSAPI'
-      requestObj.product_id = request.product_id
       requestObj.limit_pay = 'no_credit'
       requestObj.openid = request.openid
 
-      ['detail', 'attach', 'goods_tag'].forEach(key => {
+      ['product_id', 'detail', 'attach', 'goods_tag'].forEach(key => {
         if (requestObj[key]) {
           requestObj[key] = request[key]
         }
