@@ -1,7 +1,29 @@
 const fetch = require('node-fetch')
+const xml2js = require('xml2js')
+const xmlBuilder = new xml2js.Builder({ rootName: 'xml', headless: true })
+const xmlParser = new xml2js.Parser({ trim: true, explicitArray: false, explicitRoot: false })
+
 const defaultHeaders = {
   'Accept':  'application/json',
   'Content-Type': 'application/json'
+}
+
+// a promise wrapper of xml parser
+function parseXML (xml) {
+  return new Promise((resolve, reject) => {
+    xmlParser.parseString(xml, (err, result) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(result)
+      }
+    })
+  })
+}
+
+// a wrapper of build xml
+function buildXML (object) {
+  return xmlBuilder.buildObject(object)
 }
 
 exports.get = function (url, params = {}, headers = {}) {
@@ -27,6 +49,17 @@ exports.post = function (url, request = {}, headers = {}) {
     headers,
     body: JSON.stringify(request)
   }).then(r => r.json())
+}
+
+exports.postXML = function (url, request = {}, headers = {}) {
+  return fetch(url, {
+    method: 'POST',
+    headers: {
+      'Accept': 'text/xml; charset=utf-8',
+      'Content-Type': 'text/xml; charset=utf-8'
+    },
+    body: buildXML(request)
+  }).then(r => r.text()).then(r => parseXML(r))
 }
 
 exports.patch = function (url, request = {}, headers = {}) {
