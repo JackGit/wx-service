@@ -2,7 +2,7 @@ module.exports = {
   // base
   API_BASE_ACCESS_TOKEN: 'https://api.weixin.qq.com/cgi-bin/token', // https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
   API_BASE_CALLBACK_IP: 'https://api.weixin.qq.com/cgi-bin/getcallbackip', // https://api.weixin.qq.com/cgi-bin/getcallbackip?access_token=ACCESS_TOKEN
-  
+
   // oauth
   API_OAU_AUTHORIZE: 'https://open.weixin.qq.com/connect/oauth2/authorize', // https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect
   API_OAU_ACCESS_TOKEN: 'https://api.weixin.qq.com/sns/oauth2/access_token', // https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code
@@ -21,5 +21,8 @@ module.exports = {
   API_PAY_REFUND: 'https://api.mch.weixin.qq.com/secapi/pay/refund',
   API_PAY_REFUND_QUERY: 'https://api.mch.weixin.qq.com/pay/refundquery',
   API_PAY_BILL_DOWNLOAD: 'https://api.mch.weixin.qq.com/pay/downloadbill',
-  API_PAY_REPORT: 'https://api.mch.weixin.qq.com/payitil/report'
+  API_PAY_REPORT: 'https://api.mch.weixin.qq.com/payitil/report',
+
+  // jsapi
+  API_JSAPI_TICKET: 'https://api.weixin.qq.com/cgi-bin/ticket/getticket' // https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN&type=jsapi
 }

@@ -2,7 +2,11 @@ const fetch = require('../utils/fetch')
 const URLS = require('../constants/urls')
 
 exports.getUserInfo = function (accessToken, openid, lang = 'zh_CN') {
-  return fetch.get(`${URLS.API_USER_INFO}?access_token=${accessToken}&openid=${openid}&lang=${lang}`)
+  return fetch.get(URLS.API_USER_INFO, {
+    access_token: accessToken,
+    openid,
+    lang
+  })
 }
 
 exports.getUserInfoBatch = function (accessToken, userList) {
