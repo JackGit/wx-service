@@ -21,7 +21,11 @@ WXService.config = {
   appId: '',
   appSecret: '',
   token: '',
-  EncodingAESKey: ''
+  EncodingAESKey: '',
+
+  // pay related
+  payKey: '',
+  merchantId: ''
 }
 
 // cache
