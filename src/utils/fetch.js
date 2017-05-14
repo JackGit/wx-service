@@ -11,7 +11,7 @@ const defaultHeaders = {
 // a promise wrapper of xml parser
 function parseXML (xml) {
   return new Promise((resolve, reject) => {
-    xmlParser.parseString(xml, (err, result) {
+    xmlParser.parseString(xml, (err, result) => {
       if (err) {
         reject(err)
       } else {

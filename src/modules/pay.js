@@ -4,7 +4,7 @@ const md5 = require('md5')
 const moment = require('moment')
 
 function sign (requestObj, key) {
-  let concatStr = Object.keys(requestObj).sort().map(key => `${key}=${requestObj[key]}`).join('&')) + `&key=${key}`
+  let concatStr = Object.keys(requestObj).sort().map(key => `${key}=${requestObj[key]}`).join('&') + `&key=${key}`
   return md5(concatStr).toUpperCase()
 }
 
