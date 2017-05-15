@@ -9,7 +9,7 @@ module.exports = function (WXService) {
       return jsapiAPI.getTicket(accessToken)
     },
 
-    sign (nonceStr, timestamp, ticket, url) {
+    sign (ticket, url) {
       let obj = {
         nonceStr: stringUtils.random(16),
         timestamp: Date.now(),
