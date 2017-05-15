@@ -31,13 +31,13 @@ module.exports = function (WXService) {
       requestObj.limit_pay = 'no_credit'
       requestObj.openid = request.openid
 
-      ['product_id', 'detail', 'attach', 'goods_tag'].forEach(key => {
+      ;['product_id', 'detail', 'attach', 'goods_tag'].forEach(key => {
         if (requestObj[key]) {
           requestObj[key] = request[key]
         }
       })
 
-      ['time_start', 'time_expire'].forEach(key => {
+      ;['time_start', 'time_expire'].forEach(key => {
         let t = request[key]
         if (t) {
           requestObj[key] = typeof t === 'string' ? t : WXService.pay.getTimeString(t)
