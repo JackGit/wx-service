@@ -15,6 +15,7 @@ module.exports = function (WXService) {
 
     paySign (prepayId, signType) {
       let obj = {
+        appId: WXService.config.appId,
         timeStamp: Date.now(),
         nonceStr: stringUtils.random(16),
         package: `prepay_id=${prepayId}`,
