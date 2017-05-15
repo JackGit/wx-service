@@ -19,7 +19,7 @@ module.exports = function (WXService) {
         timeStamp: Date.now(),
         nonceStr: nonceStr || stringUtils.random(16),
         package: `prepay_id=${prepayId}`,
-        signType
+        signType: 'MD5'
       }
       obj.paySign = sign(obj, WXService.config.payKey)
       return obj
