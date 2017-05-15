@@ -13,11 +13,11 @@ module.exports = function (WXService) {
       return moment(date).format('yyyyMMddHHmmss')
     },
 
-    paySign (prepayId, nonceStr) {
+    paySign (prepayId) {
       let obj = {
         appId: WXService.config.appId,
         timeStamp: Date.now(),
-        nonceStr: nonceStr || stringUtils.random(16),
+        nonceStr: stringUtils.random(16),
         package: `prepay_id=${prepayId}`,
         signType: 'MD5'
       }
