@@ -1,5 +1,5 @@
 const payAPI = require('../api/pay')
-const randomString = require('../utils/string').random
+const stringUtils = require('../utils/string')
 const md5 = require('md5')
 const moment = require('moment')
 
@@ -18,13 +18,24 @@ module.exports = function (WXService) {
       return moment(date).format('yyyyMMddHHmmss')
     },
 
+    paySign (prepayId, signType) {
+      let obj = {
+        timeStamp: Date.now(),
+        nonceStr: stringUtils.random(16),
+        package: `prepay_id=${prepayId}`,
+        signType
+      }
+      obj.paySign = stringUtils.sign(obj, { signType })
+      return obj
+    },
+
     createOrder (request) {
       let requestObj = {}
 
       requestObj.appid = WXService.config.appId
       requestObj.mch_id = WXService.config.merchantId
       requestObj.device_info = 'WEB'
-      requestObj.nonce_str = randomString(16)
+      requestObj.nonce_str = stringUtils.random(16)
       requestObj.body = request.body
       requestObj.out_trade_no = request.out_trade_no
       requestObj.fee_type = 'CNY'
