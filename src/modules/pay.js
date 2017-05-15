@@ -1,5 +1,5 @@
 const payAPI = require('../api/pay')
-const randomString = require('../utils/string').randomString
+const randomString = require('../utils/string').random
 const md5 = require('md5')
 const moment = require('moment')
 
@@ -20,7 +20,7 @@ module.exports = function (WXService) {
       requestObj.appid = WXService.config.appId
       requestObj.mch_id = WXService.config.merchantId
       requestObj.device_info = 'WEB'
-      requestObj.nonce_str = randomString.generate(16)
+      requestObj.nonce_str = randomString(16)
       requestObj.body = request.body
       requestObj.out_trade_no = request.out_trade_no
       requestObj.fee_type = 'CNY'
