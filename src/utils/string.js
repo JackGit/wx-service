@@ -14,6 +14,6 @@ exports.random = function (length) {
 
 exports.object2KVString = function (obj, sort = true) {
   return sort
-    ? Object.keys(paramsObj).filter(key => !isEmpty(paramsObj[key])).sort().map(key => `${key}=${paramsObj[key]}`).join('&')
-    : Object.keys(paramsObj).filter(key => !isEmpty(paramsObj[key])).map(key => `${key}=${paramsObj[key]}`).join('&')
+    ? Object.keys(obj).filter(key => !isEmpty(obj[key])).sort().map(key => `${key}=${obj[key]}`).join('&')
+    : Object.keys(obj).filter(key => !isEmpty(obj[key])).map(key => `${key}=${obj[key]}`).join('&')
 }
