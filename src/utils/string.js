@@ -5,7 +5,7 @@ const isEmpty = require('lodash.isempty')
 
 exports.sign = function (paramsObj, options) {
   let str = typeof paramsObj === 'string' ? paramsObj : exports.object2KVString(paramsObj)
-  return (options && options.signType === 'MD5') ? md5(str) : sha1(str)
+  return (options && options.signType.toUpperCase() === 'MD5') ? md5(str) : sha1(str)
 }
 
 exports.random = function (length) {

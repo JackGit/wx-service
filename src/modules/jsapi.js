@@ -1,7 +1,7 @@
 // https://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html
 
 const jsapiAPI = require('../api/jsapi')
-const sign = require('../utils/string').sign
+const stringUtils = require('../utils/string')
 
 module.exports = function (WXService) {
   WXService.jsapi = {
@@ -10,12 +10,14 @@ module.exports = function (WXService) {
     },
 
     sign (nonceStr, timestamp, ticket, url) {
-      return sign({
-        noncestr: nonceStr,
-        timestamp,
+      let obj = {
+        nonceStr: stringUtils.random(16),
+        timestamp: Date.now(),
         jsapi_ticket: ticket,
         url
-      })
+      }
+      obj.signature = stringUtils.sign(obj, { signType: 'sha1'})
+      return obj
     }
   }
 }
