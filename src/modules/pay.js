@@ -21,7 +21,8 @@ module.exports = function (WXService) {
         package: `prepay_id=${prepayId}`,
         signType
       }
-      obj.paySign = stringUtils.sign(obj, { signType })
+      // obj.paySign = stringUtils.sign(obj, { signType })
+      obj.paySign = sign(obj, WXService.config.payKey)
       return obj
     },
 
