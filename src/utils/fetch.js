@@ -52,13 +52,15 @@ exports.post = function (url, request = {}, headers = {}) {
 }
 
 exports.postXML = function (url, request = {}, headers = {}) {
+  let xmlString = buildXML(request)
+  console.log('fetch.postXML', url, request, xmlString)
   return fetch(url, {
     method: 'POST',
     headers: {
       'Accept': 'text/xml; charset=utf-8',
       'Content-Type': 'text/xml; charset=utf-8'
     },
-    body: buildXML(request)
+    body: xmlString
   }).then(r => r.text()).then(r => parseXML(r))
 }
 

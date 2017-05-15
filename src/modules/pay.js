@@ -47,7 +47,7 @@ module.exports = function (WXService) {
       requestObj.sign_type = 'MD5'
       requestObj.sign = sign(requestObj, WXService.config.payKey)
 
-      return payAPI.createOrder(requestObj)
+      return payAPI.createOrder(requestObj).then(r => { console.log(r); return r})
     }
   }
 }
