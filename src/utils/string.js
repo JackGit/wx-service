@@ -1,10 +1,11 @@
 const sha1 = require('sha1')
 const md5 = require('md5')
 const randomstring = require('randomstring')
-const isEmpty = require('lodash.isempty')
+const isEmpty = require('./lang').isEmpty
 
 exports.sign = function (paramsObj, options) {
   let str = typeof paramsObj === 'string' ? paramsObj : exports.object2KVString(paramsObj)
+  console.log('sorted string', str)
   return (options && options.signType.toUpperCase() === 'MD5') ? md5(str) : sha1(str)
 }
 
