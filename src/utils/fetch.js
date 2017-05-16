@@ -1,29 +1,10 @@
 const fetch = require('node-fetch')
-const xml2js = require('xml2js')
-const xmlBuilder = new xml2js.Builder({ rootName: 'xml', headless: true })
-const xmlParser = new xml2js.Parser({ trim: true, explicitArray: false, explicitRoot: false })
+const parseXML = require('./string').parseXML
+const buildXML = require('./string').buildXML
 
 const defaultHeaders = {
   'Accept':  'application/json',
   'Content-Type': 'application/json'
-}
-
-// a promise wrapper of xml parser
-function parseXML (xml) {
-  return new Promise((resolve, reject) => {
-    xmlParser.parseString(xml, (err, result) => {
-      if (err) {
-        reject(err)
-      } else {
-        resolve(result)
-      }
-    })
-  })
-}
-
-// a wrapper of build xml
-function buildXML (object) {
-  return xmlBuilder.buildObject(object)
 }
 
 exports.get = function (url, params = {}, headers = {}) {
