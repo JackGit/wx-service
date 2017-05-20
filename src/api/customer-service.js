@@ -38,3 +38,22 @@ exports.uploadAvatar = function (accessToken, account, imageURL) {
 exports.delete = function (accessToken, account) {
   return fetch.get(`${URLS.API_CUSTOMER_SERVICE_DELETE}?access_token=${accessToken}&kf_account=${account}`)
 }
+
+exports.createSession = function () {}
+
+exports.closeSession = function () {}
+
+exports.getSession = function () {}
+
+exports.getSessionList = function () {}
+
+exports.getWaitSessionList = function () {}
+
+exports.getMessageList = function (accessToken, startTime, endTime, msgID, number) {
+  return fetch.post(`${URLS.API_CUSTOMER_SERVICE_MSG_LIST}?access_token=${accessToken}`, {
+    starttime: startTime, // unix timestamp
+    endtime: endTime, // unix timestamp
+    msgid: msgID, // starts from 1
+    number  // < 10000
+  })
+}

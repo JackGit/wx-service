@@ -33,6 +33,7 @@ module.exports = {
   API_CUSTOMER_SERVICE_INVITE: 'https://api.weixin.qq.com/customservice/kfaccount/inviteworker', // https://api.weixin.qq.com/customservice/kfaccount/inviteworker?access_token=ACCESS_TOKEN
   API_CUSTOMER_SERVICE_UPDATE: 'https://api.weixin.qq.com/customservice/kfaccount/update', // https://api.weixin.qq.com/customservice/kfaccount/update?access_token=ACCESS_TOKEN
   API_CUSTOMER_SERVICE_DELETE: 'https://api.weixin.qq.com/customservice/kfaccount/del', // https://api.weixin.qq.com/customservice/kfaccount/del?access_token=ACCESS_TOKEN&kf_account=KFACCOUNT
-  API_CUSTOMER_SERVICE_UPLOAD_AVATAR: 'https://api.weixin.qq.com/customservice/kfaccount/uploadheadimg' // https://api.weixin.qq.com/customservice/kfaccount/uploadheadimg?access_token=ACCESS_TOKEN&kf_account=KFACCOUNT
+  API_CUSTOMER_SERVICE_UPLOAD_AVATAR: 'https://api.weixin.qq.com/customservice/kfaccount/uploadheadimg', // https://api.weixin.qq.com/customservice/kfaccount/uploadheadimg?access_token=ACCESS_TOKEN&kf_account=KFACCOUNT
+  API_CUSTOMER_SERVICE_MSG_LIST: 'https://api.weixin.qq.com/customservice/msgrecord/getmsglist' // https://api.weixin.qq.com/customservice/msgrecord/getmsglist?access_token=ACCESS_TOKEN
 
 }
